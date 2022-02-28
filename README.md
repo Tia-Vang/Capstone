@@ -1,5 +1,6 @@
 # Capstone_HomeChef
-Capstone Project
+Capstone Project <br>
+
 
 ### Django Framework
 To run the application locally on your computer, make sure the following is installed:

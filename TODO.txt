@@ -1,0 +1,15 @@
+############################################
+By the end of week 2-27-2022 to 3-5-2022:
+--------------------------------------------
+-Everyone should have installed and set up
+ Django
+-complete bare bones UI for main needed HTML
+ pages:
+ ---login
+ ---register
+ ---home page
+ ---profile
+
+ -complete bare bones Python for moving from
+  page to page
+#############################################

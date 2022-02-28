@@ -3,7 +3,7 @@ Capstone Project
 
 ### Django Framework
 To run the application locally on your computer, make sure the following is installed:
-1. Install python (version 3 or higher)
+1. Install python (version 3 or higher) https://www.python.org/downloads/
 2. Install Django with 'pip install Django==4.0.2'
 3. Install virtual environment with 'pip install pipenv'
 

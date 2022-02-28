@@ -18,9 +18,15 @@ Django for Beginners <br>
 https://www.youtube.com/watch?v=rHux0gMZ3Eg 
 
 
-### Git Branch
+### Git Clone & Git Branch
 NOTE: Make sure Git has been installed before using any git commands https://git-scm.com/ <br>
-To collaborate to repository, do not make changes in the master branch. Create your own branch and push/commit changes from the branch.
+
+To start collaborating to the repository, you'll need to clone the repository to a local folder on your computer.
+1. Create a folder on your computer
+2. Use ' git clone {repository url} ' to copy the repository to the folder you created
+3. Now you have a copy of the djanjo framework and can start working
+
+To push your work to the repository, do not make changes in the master branch, create your own branch and push/commit changes from the branch.
 1. Use ' git branch -c {branch_name} ' to create your branch
 2. Use ' git branch ' to see all the branches (if any) that have been made <br> (the highlighted branch will be the one you are currently connected to)
 3. Use ' git checkout {branch name} ' to switch to the branch you will be working on <br> (use ' git branch ' again to make sure you are on the correct branch)

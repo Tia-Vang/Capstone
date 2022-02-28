@@ -22,7 +22,7 @@ https://www.youtube.com/watch?v=rHux0gMZ3Eg
 NOTE: Make sure Git has been installed before using any git commands https://git-scm.com/ <br>
 
 To start collaborating to the repository, you'll need to clone the repository to a local folder on your computer.
-1. Create a folder on your computer
+1. Create a folder on your computer, name it whatever you want
 2. Use ' git clone {repository url} ' to copy the repository to the folder you created
 3. Now you have a copy of the djanjo framework and can start working
 

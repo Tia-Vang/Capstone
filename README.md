@@ -1,6 +1,6 @@
 # Capstone_HomeChef
 Capstone Project <br>
-
+Set-Up Video: https://drive.google.com/file/d/1fCBFA1KDdXp4tSxFHPQJ4POuv4qKm-b6/view?usp=sharing
 
 ### Django Framework
 To run the application locally on your computer, make sure the following is installed:

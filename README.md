@@ -13,8 +13,10 @@ To run the application locally on your computer, make sure the following is inst
 ### Resources to learn more about Django
 Django Docs <br>
 https://docs.djangoproject.com/en/4.0/ <br>
-Net ninja <br>
+Net Ninja Django Playlist <br>
 https://www.youtube.com/playlist?list=PL4cUxeGkcC9ib4HsrXEYpQnTOTZE1x0uc <br>
+Django Tutorial for Beginners Playlist<br>
+https://www.youtube.com/playlist?list=PLK8cqdr55Tsv-D2HMdrnD32oOVBNvmxjr<br>
 Django for Beginners <br>
 https://www.youtube.com/watch?v=rHux0gMZ3Eg 
 

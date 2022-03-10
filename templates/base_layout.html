@@ -1,23 +1,66 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
         <title>Home Chef</title>
-        <link rel="stylesheet" type="text/css" href="{% static 'css/bootsrap.css' %}">
+        {% endif %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
         <script src="https://kit.fontawesome.com/26f88d0f92.js" crossorigin="anonymous"></script>
     </head>
+    
 
     <body>
-        <nav>
-            <a href="{% url 'home' %}">home</a>
-            <a href="{% url 'about' %}">about</a>
-        </nav>
 
-        {% block content %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+
+              <a class="navbar-brand" href="{% url 'home' %}">
+                  <img src="{% static 'img/hc3.3.PNG' %}" alt="logo" class="img-thumbnail">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Register</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Sign-In</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                  </form>
+              </div>
+            </div>
+          </nav>
+ 
+            {% block content %} {% endblock %}
         
-        {% endblock %}
 
     </body>
+
+    <footer class="bg-dark text-light position-absolute fixed-bottom">
+        <p class="text-center py-2 my-0">
+            <a href="{% url 'about' %}" class="link-outline-primary">About</a>
+        </p>
+        <p class="text-center py-2 my-0">
+            Copyright &copy; 2022 - All rights reserved
+        </p>
+    </footer>
 </html>

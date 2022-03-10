@@ -1,6 +1,11 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
-        <h1>THIS IS THE HOMEPAGE</h1>
+
+{% load static %}
+
+<div id="home_images" class=" text-center" >
+<img src="{% static 'img/gettyimages_rollingpin.jpg'%}" alt="" class="img-fluid">
+</div>
 
 {% endblock %}

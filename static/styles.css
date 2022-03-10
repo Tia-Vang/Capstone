@@ -1,0 +1,17 @@
+
+html{
+    font-family: sans-serif ;
+}
+
+h1 {
+color: blue;
+}
+
+#footer{
+    color: white;
+}
+
+#home_images{
+    width: 100%;
+    height: 300px;
+}

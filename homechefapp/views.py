@@ -22,5 +22,5 @@ def about(request):
     return render(request, 'homechefapp/about.html', {'title': 'About'})
 
 def home(request):
-    response = requests.get('')
+    #response = requests.get('')
     return render(request, 'homechefapp/home.html', {'title': 'Home'})

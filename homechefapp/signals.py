@@ -5,6 +5,9 @@ from .models import comment_section
 from .models import comment
 from .models import rating
 
+'''
+    User methods
+'''
 def create_user():
     #logic for making user goes here
     print("user created") #for debugging
@@ -24,3 +27,18 @@ def logout_user():
 def get_user(int id):
     #logic for method that returns user object based on id number
     print("user was retrieved")
+
+'''
+    Recipie methods
+'''
+#recipe methods go here
+
+
+'''
+    comment section methods
+'''
+
+
+'''
+    rating methods
+'''

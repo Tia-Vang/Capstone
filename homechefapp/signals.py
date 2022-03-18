@@ -1,5 +1,9 @@
 from django.db.models.signals import post_save
 from .models import user
+from .models import recipe
+from .models import comment_section
+from .models import comment
+from .models import rating
 
 def create_user():
     #logic for making user goes here
@@ -16,4 +20,3 @@ def login_user():
 def logout_user():
     #logic for logging out user goes here
     print("user logged out") #for debugging
-    

@@ -20,3 +20,7 @@ def login_user():
 def logout_user():
     #logic for logging out user goes here
     print("user logged out") #for debugging
+
+def get_user(int id):
+    #logic for method that returns user object based on id number
+    print("user was retrieved")

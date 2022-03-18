@@ -8,9 +8,10 @@ class user(models.Model):
     email = models.CharField(max_length = 100)
     password = models.CharField(max_length = 100)
     username = models.CharField(max_length = 100)
+    #add one for user id
     #add one for preffernces here
     #add one for comments here
-    
+
 
 class recipe(models.Model):
     #this class will hold each user's data
@@ -24,3 +25,7 @@ class recipe(models.Model):
     #add one for view blocks (f a user choses not to see this one)
     #add one for reports
     #add one for comments
+
+class comment(models.Model):
+    #add one to hold the userid of the commentor
+    body = models.CharField(max_length = 10000000)

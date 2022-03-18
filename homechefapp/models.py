@@ -26,6 +26,8 @@ class recipe(models.Model):
     #add one for reports
     #add one for comments
 
+class comment_section(models.Model):
+    #add an array or hash set to to hold all the comments 
 class comment(models.Model):
     #add one to hold the userid of the commentor
     body = models.CharField(max_length = 10000000)

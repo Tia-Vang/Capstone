@@ -34,6 +34,6 @@ def home(request):
     }
     return render(request, 'homechefapp/home.html', context)
     #response = requests.get('')
-    return render(request, 'homechefapp/home.html', {'title': 'Home'})
+    #return render(request, 'homechefapp/home.html', {'title': 'Home'})
 
 #todo: add a search results page, for you page

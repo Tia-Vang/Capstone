@@ -7,7 +7,7 @@ import requests
 # Create your views here.
 # render method(1st param = request obj, 2nd param = template name (template path), 3rd param = {'key':'value'})
 
- 
+
 
 def profile(request):
     return render(request, 'homechefapp/profile.html', {'title': 'Profile', 'name':'Harry Potter'})
@@ -24,3 +24,5 @@ def about(request):
 def home(request):
     #response = requests.get('')
     return render(request, 'homechefapp/home.html', {'title': 'Home'})
+
+#todo: add a search results page, for you page

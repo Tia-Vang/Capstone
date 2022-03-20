@@ -6,8 +6,13 @@ import requests
 
 # Create your views here.
 # render method(1st param = request obj, 2nd param = template name (template path), 3rd param = {'key':'value'})
+<<<<<<< HEAD
 API_KEY_SPOONACULAR = 'af8f73de917040b2b3b4e5b78fe4947a'
  
+=======
+
+
+>>>>>>> 97d47343a38a093533712ccf841a890563aec626
 
 def profile(request):
     return render(request, 'homechefapp/profile.html', {'webPageTitle': 'Profile', 'name':'Harry Potter'})
@@ -33,3 +38,7 @@ def home(request):
         'webPageTitle' : 'Home'
     }
     return render(request, 'homechefapp/home.html', context)
+    #response = requests.get('')
+    return render(request, 'homechefapp/home.html', {'title': 'Home'})
+
+#todo: add a search results page, for you page

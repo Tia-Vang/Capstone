@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
-import requests
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.template import RequestContext
+#import requests
 
 # https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2&apiKey=af8f73de917040b2b3b4e5b78fe4947a
 
@@ -16,6 +19,25 @@ def login(request):
     return render(request, 'homechefapp/login.html', {'title': 'Login'})
 
 def register(request):
+
+    if request.method == 'POST':
+        fname = request.POST['fname']
+        lname = request.POST['lname']
+        user = request.POST['user']
+        email = request.POST['email']
+        password = request.POST['password']
+
+        myuser = User.objects.create_user(user, email, password)
+        myuser.first_name = fname
+        myuser.last_name = lname
+
+        myuser.save()
+
+        #messages.success(request, "Your Account is successfully created")
+
+        return redirect('login')
+
+
     return render(request, 'homechefapp/register.html', {'title': 'Register'})
 
 def about(request):

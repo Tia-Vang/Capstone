@@ -1,43 +1,56 @@
-{% extends 'base_layout.html' %}
-
-{% block content %}
+{% extends 'base_layout.html' %} {% block content %}
 <h1 class="text-center">REGISTER</h1>
 
 <div class="container my-0">
-        <form method="POST" action="">
-                <div class="row mb-3">
-                        <label for="inputfname3" class="col-sm-2 col-form-label">First Name</label>
-                        <div class="col-sm-10">
-                                <input type="fname" class="form-control" id="inputfname3">
-                        </div>
-                </div>
-                <div class="row mb-3">
-                        <label for="inputlname3" class="col-sm-2 col-form-label">Last Name</label>
-                        <div class="col-sm-10">
-                                <input type="lname" class="form-control" id="inputlname3">
-                        </div>
-                </div>
-                <div class="row mb-3">
-                        <label for="inputuser3" class="col-sm-2 col-form-label">Username</label>
-                        <div class="col-sm-10">
-                                <input type="user" class="form-control" id="inputuser3">
-                        </div>
-                </div>
-                <div class="row mb-3">
-                        <label for="inputemail3" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputemail3">
-                        </div>
-                </div>
-                <div class="row mb-3">
-                        <label for="inputpassword3" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10">
-                                <input type="password" class="form-control" id="inputpassword3">
-                        </div>
-                </div>
-                <div class="d-grid gap-2 col-6 mx-auto">
-                        <button type="submit" class="btn btn-primary">Register Account</button>
-                </div>
-        </form>
+  <form method="POST" action="">
+    {% csrf_token %}
+    <div class="row mb-3">
+      <label for="inputfname3" class="col-sm-2 col-form-label"
+        >First Name</label
+      >
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputfname3" name="fname" />
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputlname3" class="col-sm-2 col-form-label">Last Name</label>
+      <div class="col-sm-10">
+        <input name="lname" type="text" class="form-control" id="inputlname3" />
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputuser3" class="col-sm-2 col-form-label">Username</label>
+      <div class="col-sm-10">
+        <input type="text" name="user" class="form-control" id="inputuser3" />
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputemail3" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input
+          type="email"
+          class="form-control"
+          id="inputemail3"
+          name="email"
+        />
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputpassword3" class="col-sm-2 col-form-label"
+        >Password</label
+      >
+      <div class="col-sm-10">
+        <input
+          type="password"
+          class="form-control"
+          id="inputpassword3"
+          name="password"
+        />
+      </div>
+    </div>
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <button type="submit" class="btn btn-primary">Register Account</button>
+    </div>
+  </form>
 </div>
 {% endblock %}

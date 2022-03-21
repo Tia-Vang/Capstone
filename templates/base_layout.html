@@ -5,8 +5,8 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {% if title %}
-        <title>{{ title }}</title>
+        {% if webPagetitle %}
+        <title>{{ webPageTitle }}</title>
         {% else %}
         <title>Home Chef</title>
         {% endif %}
@@ -55,7 +55,7 @@
 
     </body>
 
-    <footer class="bg-dark text-light position-absolute fixed-bottom">
+    <footer class="bg-dark text-light position-relative fixed-bottom">
         <p class="text-center py-2 my-0">
             <a href="{% url 'about' %}" class="link-outline-primary">About</a>
         </p>

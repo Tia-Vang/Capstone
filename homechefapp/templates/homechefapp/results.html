@@ -1,0 +1,36 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+{% load static %}
+
+
+
+<div class="container">
+    <div class="raw">
+        <div class="col-md-6">
+         {% for i in recipes %}
+
+
+         <div class="card rounded shadow-lg mb-3" style="width: 540px;">
+            <img src="{{ i.image }}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ i.title }}</h5>
+              <p class="card-text"><small class="text-muted">{{ i.sourceName }}</small></p>
+              <a href="{{ i.sourceUrl }}" target="_blank" class="card-link">Original Recipe</a>
+            </div>
+          </div>
+
+
+
+           {% endfor %}
+        </div>
+
+
+
+
+
+    </div>
+</div>
+
+{% endblock %}

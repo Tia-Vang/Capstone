@@ -12,7 +12,7 @@ API_KEY_SPOONACULAR = 'af8f73de917040b2b3b4e5b78fe4947a'
 
 # Create your views here.
 # render method(1st param = request obj, 2nd param = template name (template path), 3rd param = {'key':'value'})
- 
+
 
 def profile(request):
     return render(request, 'homechefapp/profile.html', {'webPageTitle': 'Profile', 'name':'Harry Potter'})
@@ -56,5 +56,31 @@ def home(request):
         'webPageTitle' : 'Home'
     }
     return render(request, 'homechefapp/home.html', context)
+
+def search(request):
+    url = f'https://api.spoonacular.com/recipes/random?number=4&apiKey={API_KEY_SPOONACULAR}'
+    response = requests.get(url)
+    data = response.json()
+
+    homeRecipes = data['recipes']
+
+    context = {
+        'recipes' : homeRecipes,
+        'webPageTitle' : 'Results'
+    }
+    return render(request, 'homechefapp/results.html', context)
+
+def for_you(request):
+    url = f'https://api.spoonacular.com/recipes/random?number=4&apiKey={API_KEY_SPOONACULAR}'
+    response = requests.get(url)
+    data = response.json()
+
+    homeRecipes = data['recipes']
+
+    context = {
+        'recipes' : homeRecipes,
+        'webPageTitle' : 'For You'
+    }
+    return render(request, 'homechefapp/for_you.html', context)
 
 #todo: add a search results page, for you page

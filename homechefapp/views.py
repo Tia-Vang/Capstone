@@ -70,4 +70,17 @@ def search(request):
     }
     return render(request, 'homechefapp/results.html', context)
 
+def for_you(request):
+    url = f'https://api.spoonacular.com/recipes/random?number=4&apiKey={API_KEY_SPOONACULAR}'
+    response = requests.get(url)
+    data = response.json()
+
+    homeRecipes = data['recipes']
+
+    context = {
+        'recipes' : homeRecipes,
+        'webPageTitle' : 'For You'
+    }
+    return render(request, 'homechefapp/for_you.html', context)
+
 #todo: add a search results page, for you page

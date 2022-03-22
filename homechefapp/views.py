@@ -58,11 +58,12 @@ def home(request):
     return render(request, 'homechefapp/home.html', context)
 
 def search(request):
-    url = f'https://api.spoonacular.com/recipes/random?number=4&apiKey={API_KEY_SPOONACULAR}'
+    #TODO: change pasta to whatever is in the searchbar
+    url = f'https://api.spoonacular.com/recipes/complexSearch?query=pasta&number=4&apiKey={API_KEY_SPOONACULAR}'
     response = requests.get(url)
     data = response.json()
 
-    homeRecipes = data['recipes']
+    homeRecipes = data['results']
 
     context = {
         'recipes' : homeRecipes,

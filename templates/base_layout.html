@@ -38,14 +38,15 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}">Sign-In</a>
                   </li>
-                  {% if True %} <! –– should be updated to show if logged in ––>
+                  {% if True %} 
+                  <!--should be updated to show if logged in-->
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'profile' %}">Profile</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'tailored' %}">For You</a>
                   </li>
-                  {%endif%}
+                  {% endif %}
                 </ul>
                 <form class="d-flex">
                     <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">

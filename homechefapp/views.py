@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.template import RequestContext
 import requests
+from django.contrib.auth import authenticate, login
 
 # Using Spoonacular API for homepage (note from Tia)
 # https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2&apiKey=af8f73de917040b2b3b4e5b78fe4947a
@@ -18,6 +19,23 @@ def profile(request):
     return render(request, 'homechefapp/profile.html', {'webPageTitle': 'Profile', 'name':'Harry Potter'})
 
 def login(request):
+    if request.method == 'POST': 
+        email = request.POST['email']
+        password = request.POST['password']
+
+        user = authenticate(email=email, password = password)
+
+        if user is not None:
+            login(request, user)
+            #fname = user.first_name
+            #return render(request, "authentication/index.html", {'fname': fname})
+            #return redirect('profile')
+            return redirect('profile')
+
+        else:
+            messages.error(request, "Bad Credentials")
+            return redirect('profile')
+
     return render(request, 'homechefapp/login.html', {'webPageTitle': 'Login'})
 
 def register(request):

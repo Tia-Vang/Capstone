@@ -26,6 +26,11 @@
           id="inputpassword3"
           name="password"
         />
+        {% if user.is_authenticated %}
+          <p>logged ins</p>
+        {% else %}
+          <p>Not logged in</p>
+        {% endif %}   
       </div>
     </div>
     <div class="d-grid gap-2 col-6 mx-auto">
@@ -33,4 +38,6 @@
     </div>
   </form>
 </div>
+
+
 {% endblock %}

@@ -2,6 +2,18 @@
 
 {% block content %}
         <h1>PROFILE PAGE</h1>
-        <p>Hello! {{ name }}</p>
+  
+        <p>Hello! {{ user }}</p>
+
+        <p>Set your preferences</p>
+        <input type="checkbox" id="vegonly" name="vegonly" value="vegonly">
+        <label for="vegonly"> Veg only</label><br>
+        <input type="checkbox" id="nobeef" name="nobeef" value="nobeef">
+        <label for="nobeef"> No Beef</label><br>
+        <input type="checkbox" id="nopork" name="nopork" value="nopork">
+        <label for="nopork"> No Pork </label><br>
+
+
+
    
 {% endblock %}

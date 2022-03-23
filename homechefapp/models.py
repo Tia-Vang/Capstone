@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # the models used so far are not final and are up for revision
 

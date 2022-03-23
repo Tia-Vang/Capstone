@@ -126,6 +126,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
 
+#creates profile_pics directory in media director
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

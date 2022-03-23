@@ -4,6 +4,10 @@ from .models import recipe
 from .models import comment_section
 from .models import comment
 from .models import rating
+from django.db.models.signals import post_save
+from django.contrib.auth.models import User
+from django.dispatch import receiver
+from .models import 
 
 '''
     User methods
@@ -24,7 +28,7 @@ def logout_user():
     #logic for logging out user goes here
     print("user logged out") #for debugging
 
-def get_user(int id):
+def get_user():
     #logic for method that returns user object based on id number
     print("user was retrieved")
 
@@ -42,3 +46,13 @@ def get_user(int id):
 '''
     rating methods
 '''
+#created profiles for users created
+@receiver(post_save, sender=User)
+def create_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+
+#created profiles for users created
+@receiver(post_save, sender=User)
+def save_profile(sender, instance, created, **kwargs):
+    instance.profile.save()

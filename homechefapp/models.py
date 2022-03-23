@@ -37,3 +37,10 @@ class rating(models.Model):
     #add one to hold user id of the rater here
     #add one for the rating (from 1 to 5)
     pass;
+
+class Profile(models.Model):
+    user = models.OneToOneField(user, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.jpeg', upload_to='profile_pics')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'

@@ -3,7 +3,7 @@
 {% block content %}
         <h1>PROFILE PAGE</h1>
   
-        <p>Hello! {{ user }}</p>
+        <p>Hello {{ user.first_name }} {{user.last_name}}!</p>
 
         <p>Set your preferences</p>
         <input type="checkbox" id="vegonly" name="vegonly" value="vegonly">

@@ -1,42 +1,29 @@
-{% extends 'base_layout.html' %} {% block content %}
-<h1 class="text-center">SIGN-IN</h1>
+{% extends 'base_layout.html' %} 
+{% load crispy_forms_tags %}
 
-<div class="container my-0">
-  <form method="POST" action="">
-    {% csrf_token %}
-    <div class="row mb-3">
-      <label for="inputemail3" class="col-sm-2 col-form-label">Email</label>
-      <div class="col-sm-10">
-        <input
-          type="email"
-          class="form-control"
-          id="inputemail3"
-          name="email"
-        />
-      </div>
+{% block content %}
+
+<div class="container my-0 m-3">
+  <div class="content-section m-3">
+    <form action="" method="post">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">
+                Log In
+            </legend>
+                {{ form|crispy }}
+        </fieldset>
+        <div class="form-group m-3">
+            <button class="btn btn-outline-info" type="submit">Login</button>
+        </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Need An Account?
+            <a class="ml-2" href="{% url 'register' %}">Register Here</a>
+        </small>
     </div>
-    <div class="row mb-3">
-      <label for="inputpassword3" class="col-sm-2 col-form-label"
-        >Password</label
-      >
-      <div class="col-sm-10">
-        <input
-          type="password"
-          class="form-control"
-          id="inputpassword3"
-          name="password"
-        />
-        {% if user.is_authenticated %}
-          <p>logged ins</p>
-        {% else %}
-          <p>Not logged in</p>
-        {% endif %}   
-      </div>
-    </div>
-    <div class="d-grid gap-2 col-6 mx-auto">
-      <button type="submit" class="btn btn-primary">Sign-In</button>
-    </div>
-  </form>
+</div>
 </div>
 
 

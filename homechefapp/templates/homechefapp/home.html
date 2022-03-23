@@ -3,19 +3,15 @@
 {% block content %}
 
 {% load static %}
-
-
-
-<div class="container"> 
+<div class="container">
+<H1 class="row justify-content-center">Welcome to Home Chef</H1>
+</div>
+<div class="container m-3"> 
     <div class="row justify-content-center">
         <div class="col-md-6">
           {% for i in recipes %}
          <div class="card rounded shadow-lg mb-3" style="width: 540px;">
-            {% if user.is_authenticated %}
-                <p> </p>
-            {% else %}
-                <p>Not logged in</p>
-            {% endif %}
+            
             <img src="{{ i.image }}" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">{{ i.title }}</h5>

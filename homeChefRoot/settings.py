@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'homechefapp.apps.HomechefappConfig',
 ]
 
@@ -129,6 +130,13 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
+
+# to install this library use: pip install django-crispy-forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# authentication redirects
+LOGIN_REDIRECT_URL = 'tailored'
+LOGIN_URL = 'login'
 
 #creates profile_pics directory in media director
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

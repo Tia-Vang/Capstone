@@ -107,7 +107,7 @@ def for_you(request):
     }
 
 
-    onlyveg = models.BooleanFields()
+    #onlyveg = models.BooleanFields()
 
     return render(request, 'homechefapp/for_you.html', context)
 

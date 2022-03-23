@@ -65,7 +65,6 @@ def about(request):
 def home(request):
     #urlSearch = f'https://api.spoonacular.com/recipes/complexSearch&apiKey={API_KEY_SPOONACULAR}'
     
-
     url = f'https://api.spoonacular.com/recipes/random?number=4&apiKey={API_KEY_SPOONACULAR}'
     response = requests.get(url)
     data = response.json()

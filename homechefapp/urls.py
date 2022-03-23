@@ -14,10 +14,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('', views.home, name='home'),
 ]
-<<<<<<< HEAD
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     
-=======
->>>>>>> 8d1f5befd431227ec8d72753082e8ee3bedadf24

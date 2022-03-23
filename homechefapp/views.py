@@ -51,7 +51,9 @@ def register(request):
         myuser.first_name = fname
         myuser.last_name = lname
 
+
         myuser.save()
+        
 
         #messages.success(request, "Your Account is successfully created")
 
@@ -104,6 +106,10 @@ def for_you(request):
         'recipes' : homeRecipes,
         'webPageTitle' : 'For You'
     }
+
+
+    onlyveg = models.BooleanFields()
+
     return render(request, 'homechefapp/for_you.html', context)
 
 #todo: add a search results page, for you page

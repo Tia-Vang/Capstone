@@ -6,10 +6,12 @@
 
 
 
-<div class="container"> 
-    <div class="row justify-content-center">
+<div class="container">
+    <div class="raw">
         <div class="col-md-6">
-          {% for i in recipes %}
+         {% for i in recipes %}
+
+
          <div class="card rounded shadow-lg mb-3" style="width: 540px;">
             <img src="{{ i.image }}" class="card-img-top" alt="...">
             <div class="card-body">
@@ -18,8 +20,16 @@
               <a href="{{ i.sourceUrl }}" target="_blank" class="card-link">Original Recipe</a>
             </div>
           </div>
+
+
+
            {% endfor %}
         </div>
+
+
+
+
+
     </div>
 </div>
 

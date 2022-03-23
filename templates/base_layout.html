@@ -14,7 +14,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
         <script src="https://kit.fontawesome.com/26f88d0f92.js" crossorigin="anonymous"></script>
     </head>
-    
+
 
     <body>
 
@@ -38,20 +38,26 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'login' %}">Sign-In</a>
                   </li>
+                  {% if True %} 
+                  <!--should be updated to show if logged in-->
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'profile' %}">Profile</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'tailored' %}">For You</a>
+                  </li>
+                  {% endif %}
                 </ul>
                 <form class="d-flex">
                     <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                    <button class="btn btn-outline-primary" type="submit"><a class="nav-link" href="{% url 'results' %}">Search</a></button>
                   </form>
               </div>
             </div>
           </nav>
 
           {% block content %} {% endblock %}
-        
+
 
     </body>
 

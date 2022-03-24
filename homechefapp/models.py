@@ -1,17 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
+from PIL import Image
 
 # the models used so far are not final and are up for revision
 
-class user(models.Model):
-    #this class will hold each user's data
-    #so far, these feilds will each accept a sequence of charecters at most 100 in length
-    email = models.CharField(max_length = 100)
-    password = models.CharField(max_length = 100)
-    username = models.CharField(max_length = 100)
-    #add one for user id
-    #add one for preffernces here
-    #add one for comments here
-
+# ***USER MODEL IS ALREADY BUILT-IN to DJANGO, so no need to create a user model***
 
 class recipe(models.Model):
     #this class will hold each user's data
@@ -37,3 +30,21 @@ class rating(models.Model):
     #add one to hold user id of the rater here
     #add one for the rating (from 1 to 5)
     pass;
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(default='default.jpeg', upload_to='profile_pics')
+
+    def __str__(self):
+        return f'{self.user.username} Profile'
+
+    def save(self):
+        super().save()
+
+        #resize image
+        img = Image.open(self.image.path)
+
+        if img.height > 300 or img.width > 300:
+            output_size = (300,300)
+            img.thumbnail(output_size)
+            img.save(self.image.path)

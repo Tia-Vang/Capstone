@@ -1,5 +1,4 @@
 from django.db.models.signals import post_save
-from .models import user
 from .models import recipe
 from .models import comment_section
 from .models import comment
@@ -49,10 +48,12 @@ def get_user():
 #created profiles for users created
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
+    #if the user was created then create a profile object with that user
     if created:
         Profile.objects.create(user=instance)
 
-#created profiles for users created
+
 @receiver(post_save, sender=User)
-def save_profile(sender, instance, created, **kwargs):
+def save_profile(sender, instance, **kwargs):
+    #save profile when created
     instance.profile.save()

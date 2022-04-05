@@ -6,9 +6,13 @@ Set-Up Video: https://drive.google.com/file/d/1fCBFA1KDdXp4tSxFHPQJ4POuv4qKm-b6/
 To run the application locally on your computer, make sure the following is installed:
 1. Install python (version 3 or higher) https://www.python.org/downloads/
 2. Install Django with 'pip install Django==4.0.2'
-3. Install virtual environment with 'pip install pipenv'
+4. Install virtual environment with 'pip install pipenv' (optional)
 
-(other dependencies: additional softwares: Bootstrap, somethingDB, Heroku)
+other dependencies to install: Pillow, Crispy Forms <br>
+-Install Pillow with 'pip install Pillow'<br>
+-Install Crispy Forms with 'pip install django-crispy-forms'<br> <br>
+
+(additional softwares: Bootstrap, somethingDB, Heroku)
 
 ### Resources to learn more about Django
 Django Docs <br>

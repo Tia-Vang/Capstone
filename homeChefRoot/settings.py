@@ -140,9 +140,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'tailored'
 LOGIN_URL = 'login'
 
-#creates profile_pics directory in media director
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+
 
 
 # Default primary key field type

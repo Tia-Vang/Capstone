@@ -7,3 +7,4 @@ class HomechefappConfig(AppConfig):
 
     def ready(self):
        import homechefapp.signals
+

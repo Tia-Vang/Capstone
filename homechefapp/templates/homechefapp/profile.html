@@ -1,25 +1,26 @@
 {% extends 'base_layout.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
-        <h1>PROFILE PAGE</h1>
-  
-        <p>Hello! {{ user }}</p>
+
+        <h1>Hello! {{ user.first_name }}</h1>
+
         <div class=" content-section">
           <div class="media">
             <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-            <div class="media-body">
-              <h2 class="account-heading">{{ user.username }}</h2>
-              <p class="text-secondary">{{ user.email }}</p>
-            </div>
           </div>
         </div>
 
+        <div>
         <form method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           <fieldset class="form-group">
               <legend class="border-bottom mb-4">
                   Profile Information
               </legend>
+              <div class="media-body">
+                <p class="account-heading">Username: {{ user.username }}</p>
+                <p class="text-secondary">Email: {{ user.email }}</p>
+              </div>
                   {{ u_form|crispy }}
                   {{ p_form|crispy }}
           </fieldset>
@@ -27,6 +28,7 @@
               <button class="btn btn-outline-info" type="submit">Update</button>
           </div>
       </form>
+    </div>
 
         <p>Set your preferences</p>
         <input type="checkbox" id="vegonly" name="vegonly" value="vegonly">

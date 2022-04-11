@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.template import RequestContext
 import requests
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterFrom
+from .forms import UserRegisterFrom, UserUpdateForm, ProfileUpdateForm
 
 # Using Spoonacular API for homepage (note from Tia)
 # https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2&apiKey=af8f73de917040b2b3b4e5b78fe4947a
@@ -14,10 +14,18 @@ API_KEY_SPOONACULAR = 'af8f73de917040b2b3b4e5b78fe4947a'
 
 # Create your views here.
 # render method(1st param = request obj, 2nd param = template name (template path), 3rd param = {'key':'value'})
-
-
+@login_required
 def profile(request):
-    return render(request, 'homechefapp/profile.html', {'webPageTitle': 'Profile', 'name':'Harry Potter'})
+    u_form = UserUpdateForm()
+    p_form = ProfileUpdateForm()
+
+    context = {
+        'u_form': u_form,
+        'p_form': p_form,
+        'webPageTitle': 'Profile'
+
+    }
+    return render(request, 'homechefapp/profile.html', context)
 
 #def login(request):
 #    return render(request, 'homechefapp/login.html', {'webPageTitle': 'Login'})

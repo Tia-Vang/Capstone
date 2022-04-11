@@ -21,7 +21,8 @@ def profile(request):
 
     context = {
         'u_form': u_form,
-        'p_form': p_form
+        'p_form': p_form,
+        'webPageTitle': 'Profile'
 
     }
     return render(request, 'homechefapp/profile.html', context)

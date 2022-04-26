@@ -1,0 +1,67 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="container">
+<div class="row pt-3">
+<div class="card md-3" style="max-width: auto;">
+    <div class="card-header justify-content-end">
+        <span class="fa fa-star checked "></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+      </div>
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ data.image }}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ data.title }}</h5>
+          
+          <p class="card-text">Servings: {{data.servings}}</p>
+      <p class="card-text">Time: {{data.readyInMinutes}} min</p>
+          <p class="card-text"><small class="text-muted">Recipe Provided By: {{ data.sourceName }}</small></p>
+          <small><a href="{{ data.sourceUrl }}" target="_blank" class="card-link">Original Recipe</a></small>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+    
+</div>
+
+    <div class="row pt-4">
+        <div class="col-md-6">
+        <p><strong>
+            Ingredient List:
+        </strong>
+        </p> 
+        {%for n in ing%}
+      <p class="">{{n.original}}</p>
+      {% endfor %}
+    </div>
+
+    <div class="col-md-5">
+        <p><strong>
+            Instructions:
+        </strong>
+        </p> 
+        
+       <!-- {% for n in inst %}
+        <p class="">{{n.step}}</p>
+        {% endfor %}--> 
+        <p class="">{{data.instructions}}</p>
+      
+    </div>
+</div>
+    
+    
+  </div>
+
+
+
+{% endblock %}

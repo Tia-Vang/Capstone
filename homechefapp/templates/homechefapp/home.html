@@ -3,25 +3,42 @@
 {% block content %}
 
 {% load static %}
+
+
 <div class="container">
 <H1 class="row justify-content-center">Welcome to Home Chef</H1>
+<H2 class="row justify-content-center">What's in your fridge?</H2>
 </div>
+<div class="container justify-content-center p-2">
+  <small>(Separate ingredients with comma)</small>
+<form class="d-flex" method="post" action="{% url 'results' %}">
+  {% csrf_token %}
+  <input class="form-control me-1" type="search" name="ingredients" placeholder="Enter Your Ingredients" aria-label="Search">
+  <button class="btn btn-outline-primary" type="submit">Search</button>
+</form>
+</div>
+
+<div class="container pt-5">
+  <h4 class="row justify-content-center">Try Out Some New Recipes</h4>
+</div>
+
 <div class="container m-3"> 
     <div class="row justify-content-center">
-        <div class="col-md-6">
+        <!--<div class="col-md-6">-->
           {% for i in recipes %}
-         <div class="card rounded shadow-lg mb-3" style="width: 540px;">
-            
-            <img src="{{ i.image }}" class="card-img-top" alt="...">
+         <div class="card rounded shadow-lg mb-3 mx-2" style="width: 540px;">
+          <a href="{% url 'recipe' i.id %}"><img src="{{i.image}}" class="card-img-top" alt="..." ></a>
             <div class="card-body">
-              <h5 class="card-title">{{ i.title }}</h5>
-              <p class="card-text"><small class="text-muted">{{ i.sourceName }}</small></p>
+              <a href="{% url 'recipe' i.id %}"><h5 class="card-title">{{ i.title }}</h5></a>
+              <p class="card-text"><small class="text-muted">Author: {{ i.sourceName }}</small></p>
               <a href="{{ i.sourceUrl }}" target="_blank" class="card-link">Original Recipe</a>
             </div>
           </div>
            {% endfor %}
-        </div>
+        <!--</div>-->
     </div>
 </div>
+
+
 
 {% endblock %}

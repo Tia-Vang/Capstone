@@ -1,7 +1,27 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
-        <h1>THIS IS THE ABOUT PAGE</h1>
-        <p>Learn about Home Chef</p>
+{% load static %}
+
+<img id='aboutimage' src="{% static 'img/foodingredients.jpg' %}" alt="rollingpin" style='width: 100%; height: 300px;'>
+        <div class="container">
+        <h1 style="text-align: center;">HomeChef</h1>
+        <p>Do you want to save money by using what you already have? 
+        Do you want something nice to eat but feel too drained to go to the grocery store for one little thing? 
+        Are you sick of scrolling through endless search results to find a recipe that’s right for you? 
+        HomeChef may be just want you are looking for.
+        </p> 
+
+        <p>HomeChef was created by a group of UNCC students that wanted to 
+        design a space where users can interact with one another to help provide 
+        positive experiences in the kitchen through cooking techniques, recipes, 
+        and likes.</p>
+
+        <p>HomeChef is designed to make finding and cooking recipes simple and efficient.
+        Hopefully, HomeChef can find the perfect recipe for you and your family while at
+        the same time, saving you time and money. One of HomeChef's thousands of recipes
+        may be the perfect breakfast, lunch, snack, or dinner.
+        </p>
+        </div>
   
 {% endblock %}

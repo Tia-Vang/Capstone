@@ -120,18 +120,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
-
-
-#creates profile_pics directory in media director
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
 # list of directories to look for static files
 # os.path.join makes it an absolute path
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
+
+#creates profile_pics directory in media director
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # to install this library use: pip install django-crispy-forms
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -139,8 +136,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # authentication redirects
 LOGIN_REDIRECT_URL = 'tailored'
 LOGIN_URL = 'login'
-
-
 
 
 # Default primary key field type

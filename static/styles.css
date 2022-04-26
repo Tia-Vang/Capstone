@@ -11,7 +11,12 @@ color: blue;
     color: white;
 }
 
-#home_images{
-    width: 100%;
-    height: 300px;
+.homeImage{
+    width: 200px;
+    height: 500px;
+}
+
+#aboutimage{
+    max-width: 100%;
+    height: 200px;
 }

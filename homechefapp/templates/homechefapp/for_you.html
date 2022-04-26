@@ -4,37 +4,44 @@
 
 {% load static %}
 
-<h1>Hello {{user.first_name}}</h1>
+<h1 class="row justify-content-center">Hello {{user.first_name}}</h1>
+
+<H2 class="row justify-content-center">What's in your fridge?</H2>
+</div>
+<div class="container justify-content-center p-2">
+  <small>(Separate ingredients with comma)</small>
+<form class="d-flex" method="post" action="{% url 'results' %}">
+  {% csrf_token %}
+  <input class="form-control me-1" type="search" name="ingredients" placeholder="Enter Your Ingredients" aria-label="Search">
+  <button class="btn btn-outline-primary" type="submit">Search</button>
+</form>
+</div>
+
+<div class="container pt-5">
+  <h4 class="row justify-content-center">Recipes Just For You</h4>
+</div>
 
 <div class="container">
-    <div class="raw">
-        <div class="col-md-6">
-         {% for i in results %}
-
-
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="{{ i.image }}" class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">{{ i.title }}</h5>
-                  <a href="{{ i.sourceUrl }}" target="_blank" class="card-link">Original Recipe</a>
-                  <p class="card-text"><small class="text-muted">{{ i.sourceName }}</small></p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-           {% endfor %}
+  <div class="row m-3">
+      {% for i in recipes %}
+      <div class="card mb-2 mx-2" style="width: 18rem;">
+        <div class="card-header justify-content-end">
+          <span class="fa fa-star checked justify-content-end"></span>
+                  <span class="fa fa-star checked justify-content-end"></span>
+                  <span class="fa fa-star checked justify-content-end"></span>
+                  <span class="fa fa-star justify-content-end"></span>
+                  <span class="fa fa-star justify-content-end"></span>
         </div>
-
-
-
-
+          <a href="{% url 'recipe' i.id %}"><img src="{{i.image}}" class="card-img-top" alt="..." ></a>
+          <!--<img src="{{i.image}}" class="card-img-top" alt="..." >-->
+          <div class="card-body">
+            <p class="card-text">{{i.title}}</p>
+          </div>
+        </div>
+      
+        {% endfor %}
+  </div>
+</div>
 
     </div>
 </div>

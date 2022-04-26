@@ -5,13 +5,19 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {% if webPagetitle %}
+        {% if webPageTitle %}
         <title>{{ webPageTitle }}</title>
         {% else %}
         <title>Home Chef</title>
         {% endif %}
+
+        <!--Bootstrap CSS-->
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+        <script src="{% static 'js/bootstrap.js' %}" defer></script>
+        <!--CUSTOM CSS & JS-->
         <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+        <script src="{% static 'main.js' %}" defer></script>
+        <!--Font Awesome (Font & Icons)-->
         <script src="https://kit.fontawesome.com/26f88d0f92.js" crossorigin="anonymous"></script>
     </head>
 
@@ -27,30 +33,21 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' %}">Home</a>
-                  </li>
+              <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                
 
-
+                  <div class="navbar">
+                    <a class="nav-item nav-link" href="{% url 'home' %}"><i class="fa-light fa-house"></i>Home</a>
                   <!--should be updated to show if logged in-->
                   {% if user.is_authenticated %}
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'tailored' %}">For You</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-                  </li>
 
+                    <a class="nav-item nav-link" href="{% url 'tailored' %}">{{user.first_name}}'s Page</a>
+                    <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                    <a class="nav-item nav-link" href="{% url 'logout' %}">Log Out</a>
+                
                   {% else %}
-
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
-                  </li>
+                    <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                  
 
                   {% endif %}
                   <!--
@@ -58,20 +55,14 @@
                     <a class="nav-link" href="{% url 'login' %}">Sign-In</a>
                   </li>
                   -->
-
-                </ul>
-                {% if user.is_authenticated %}
-                <form class="d-flex" method="get">
-                    <input class="form-control me-1" type="search" name="query" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary" type="submit">Search</button>
-                    <button class="btn btn-outline-primary" title="advanced search" type="submit">V</button>
-                  </form>
-                  {% endif %}
+                  
+                <!-- {% if user.is_authenticated %} {% endif %} -->
+              </div>
               </div>
             </div>
           </nav>
 
-
+          
           <div class="container">
             {% if messages %}
             {% for message in messages %}
@@ -80,8 +71,9 @@
             </div>
             {% endfor %}
              {% endif %}
-          {% block content %}{% endblock %}
+          
         </div>
+        {% block content %}{% endblock %}
 
 
     </body>

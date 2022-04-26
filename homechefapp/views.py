@@ -1,5 +1,4 @@
 from django.shortcuts import redirect, render
-from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.template import RequestContext
@@ -7,29 +6,18 @@ import requests
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterFrom, UserUpdateForm, ProfileUpdateForm
 
-# Using Spoonacular API for homepage (note from Tia)
+# Using Spoonacular API for homepage (150 quota/day)
 # https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2&apiKey=af8f73de917040b2b3b4e5b78fe4947a
 API_KEY_SPOONACULAR = 'af8f73de917040b2b3b4e5b78fe4947a'
+
+randomUrl = f'https://api.spoonacular.com/recipes/random?number=4&apiKey={API_KEY_SPOONACULAR}'
 
 
 # Create your views here.
 # render method(1st param = request obj, 2nd param = template name (template path), 3rd param = {'key':'value'})
-@login_required
-def profile(request):
-    u_form = UserUpdateForm()
-    p_form = ProfileUpdateForm()
 
-    context = {
-        'u_form': u_form,
-        'p_form': p_form,
-        'webPageTitle': 'Profile'
 
-    }
-    return render(request, 'homechefapp/profile.html', context)
-
-#def login(request):
-#    return render(request, 'homechefapp/login.html', {'webPageTitle': 'Login'})
-
+#####################################_____REGISTER VIEW______#####################################
 def register(request):
 
     if request.method == 'POST':
@@ -44,54 +32,101 @@ def register(request):
     return render(request, 'homechefapp/register.html', {'form':form , 'webPageTitle':'Register'})
 
 
-def about(request):
-    return render(request, 'homechefapp/about.html', {'webPageTitle': 'About'})
+#####################################_____PROFILE VIEW______#####################################
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance = request.user)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance = request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'Your profile has been updated.')
+            return redirect('profile')
+    else:
+        u_form = UserUpdateForm(instance = request.user)
+        p_form = ProfileUpdateForm(instance = request.user.profile)
 
-def home(request):
+    context = {
+        'u_form': u_form,
+        'p_form': p_form,
+        'webPageTitle': 'Profile'
 
-    url = f'https://api.spoonacular.com/recipes/random?number=4&apiKey={API_KEY_SPOONACULAR}'
-    response = requests.get(url)
+    }
+    return render(request, 'homechefapp/profile.html', context)
+
+
+#####################################_____RESULTS VIEW______#####################################
+def results(request):
+
+    if request.method == 'POST':
+        ingredients = request.POST['ingredients']
+        ingredientUrl = f'https://api.spoonacular.com/recipes/complexSearch?includeIngredients={ingredients}&number=100&apiKey={API_KEY_SPOONACULAR}'
+         
+        response = requests.get(ingredientUrl)
+        data = response.json()
+        recipes = data['results']
+
+        context = {
+            'data': data,
+          'recipes' : recipes,
+           'webPageTitle' : 'Results'
+        }
+
+        return render(request, 'homechefapp/results.html', context)
+
+
+#####################################_____RECIPE VIEW______#####################################
+def recipe(request, id):
+    recipeUrl = f'https://api.spoonacular.com/recipes/{id}/information?includeNutrition=false&apiKey={API_KEY_SPOONACULAR}'
+    response = requests.get(recipeUrl)
+
     data = response.json()
 
+    ing = data['extendedIngredients']
+    inst = data['analyzedInstructions']
+
+
+    context = {
+            'data': data,
+            'ing': ing,
+            'inst': inst,
+           'webPageTitle' : 'Recipe'
+    }
+
+    return render(request, 'homechefapp/recipe.html', context)
+
+
+
+#####################################_____FORYOU VIEW______#####################################
+def for_you(request):
+    response = requests.get(randomUrl)
+    data = response.json()
     homeRecipes = data['recipes']
 
     context = {
           'recipes' : homeRecipes,
-           'webPageTitle' : 'Home'
+           'webPageTitle' : 'Home',
     }
-    return render(request, 'homechefapp/home.html', context)
-
-def search(request):
-    #TODO: change pasta to whatever is in the searchbar
-    url = f'https://api.spoonacular.com/recipes/complexSearch?query=pasta&number=4&apiKey={API_KEY_SPOONACULAR}'
-    response = requests.get(url)
-    data = response.json()
-
-    homeRecipes = data['results']
-
-    context = {
-        'recipes' : homeRecipes,
-        'webPageTitle' : 'Results'
-    }
-    return render(request, 'homechefapp/results.html', context)
-
-def for_you(request):
-    # change 'vegitarian' to a list (using commas) of profile prefs
-    query = request.GET.get('query')
-    urlSearch = f'https://api.spoonacular.com/recipes/complexSearch?query={query}&number=4&apiKey={API_KEY_SPOONACULAR}'
-    response = requests.get(urlSearch)
-    data = response.json()
-    
-    searchRecipes = data['results']
-
-    context = {
-        'results' : searchRecipes,
-        'webPageTitle' : 'For You'
-    }
-
-
-    #onlyveg = models.BooleanFields()
 
     return render(request, 'homechefapp/for_you.html', context)
 
-#todo: add a search results page, for you page
+
+#####################################_____ABOUT VIEW______#####################################
+def about(request):
+    return render(request, 'homechefapp/about.html', {'webPageTitle': 'About'})
+
+
+#####################################_____HOME VIEW______#####################################
+def home(request):
+    response = requests.get(randomUrl)
+    data = response.json()
+    homeRecipes = data['recipes']
+
+    context = {
+          'recipes' : homeRecipes,
+           'webPageTitle' : 'Home',
+    }
+
+    return render(request, 'homechefapp/home.html', context)
+

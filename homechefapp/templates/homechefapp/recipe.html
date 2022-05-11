@@ -55,20 +55,7 @@
         <p class="">{{n.step}}</p>
         {% endfor %}--> 
         <p class="">{{data.instructions}}</p>
-        <h2>Comments</h2>
-        {% if not recipe.comment.all %}
-          No comments yet
-          <form class="d-flex" method="post" action="#">
-            {% csrf_token %}
-            <input class="form-control me-1" type="comment"  placeholder="Post a comment" >
-            <button class="btn btn-outline-primary" type="submit">Post</button>
-          </form>
-        {% else %}
-          {% for i in recipe.comment.all %}
-            {{ i.user }}
-            {{ i.title }}
-          {% endfor %}
-        {% endif %}
+        
 
 
       

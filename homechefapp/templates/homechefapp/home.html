@@ -34,6 +34,8 @@
             <div class="card-body">
               <a href="{% url 'recipe' i.id %}"><h5 class="card-title">{{ i.title }}</h5></a>
               <p class="card-text"><small class="text-muted">Author: {{ i.sourceName }}</small></p>
+              <p>Serving: {{ i.servings }} || &#8986: {{ i.readyInMinutes }} || Healthy score: {{ i.healthScore }}</a></p>
+              <p>&#128151: {{ i.aggregateLikes }} </a></p>
               <a href="{{ i.sourceUrl }}" target="_blank" class="card-link">Original Recipe</a>
             </div>
           </div>

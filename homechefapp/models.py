@@ -17,9 +17,18 @@ class Comment(models.Model):
     created_on = models.DateTimeField(default=datetime.now())
     #created_on = models.DateTimeField(auto_now_add=True)
 
+<<<<<<< HEAD
     def __str__(self):
         return f'{self.user.username} Comment'
     
+=======
+class comment_section(models.Model):
+    #add an array or hash set to to hold all the comments
+    pass;
+class comment(models.Model):
+    #add one to hold the userid of the commentor
+ 
+>>>>>>> 5ea0b7693174dbfc5a78d927fa7bfc9388d4fe60
 
 class rating(models.Model):
     #add one to hold user id of the rater here

@@ -88,6 +88,7 @@ def recipe(request, id):
 
     #comm = reversed(Comment.objects.filter(recipe_id=id))
 
+
     context = {
             'data': data,
             'ing': ing,

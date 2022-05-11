@@ -102,6 +102,7 @@ def recipe(request, id):
 
 
 #####################################_____COMMENTS VIEW______#####################################
+@login_required
 def comments(request, id):
     #r_id = request.GET.get('id')
     recipeUrl = f'https://api.spoonacular.com/recipes/{id}/information?includeNutrition=false&apiKey={API_KEY_SPOONACULAR}'
@@ -133,6 +134,7 @@ def comments(request, id):
 
 
 #####################################_____FORYOU VIEW______#####################################
+@login_required
 def for_you(request):
     response = requests.get(randomUrl)
     data = response.json()

@@ -26,7 +26,7 @@
       <p class="card-text">Time: {{data.readyInMinutes}} min</p>
           <p class="card-text"><small class="text-muted">Recipe Provided By: {{ data.sourceName }}</small></p>
           <small><a href="{{ data.sourceUrl }}" target="_blank" class="card-link">Original Recipe</a></small>
-    
+          <p>Healthy score: {{ data.healthScore }} || Cost per serving: ${{ data.pricePerServing }} || &#128151: {{ data.aggregateLikes }}</a></p>
         </div>
       </div>
     </div>
@@ -55,6 +55,9 @@
         <p class="">{{n.step}}</p>
         {% endfor %}--> 
         <p class="">{{data.instructions}}</p>
+        
+
+
       
     </div>
 </div>

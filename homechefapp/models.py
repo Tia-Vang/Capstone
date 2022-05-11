@@ -24,7 +24,7 @@ class comment_section(models.Model):
     pass;
 class comment(models.Model):
     #add one to hold the userid of the commentor
-    body = models.CharField(max_length = 10000000)
+ 
 
 class rating(models.Model):
     #add one to hold user id of the rater here

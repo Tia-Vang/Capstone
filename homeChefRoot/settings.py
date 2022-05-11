@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-3)^q^*#3w@)brh13y+h_vv8g-o!vr#bmbe%cp0#_l+z19l3h$!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -125,6 +125,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 
 #creates profile_pics directory in media director
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

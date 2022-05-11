@@ -87,6 +87,7 @@ def recipe(request, id):
     inst = data['analyzedInstructions']
 
 
+
     context = {
             'data': data,
             'ing': ing,

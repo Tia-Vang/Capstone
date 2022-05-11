@@ -1,0 +1,1 @@
+web: gunicorn homeChefRoot.wsgi --log-file -

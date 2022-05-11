@@ -13,13 +13,7 @@
     <div class="row m-3">
         {% for i in recipes %}
         <div class="card mb-2 mx-2" style="width: 18rem;">
-          <div class="card-header justify-content-end">
-            <span class="fa fa-star checked justify-content-end"></span>
-                    <span class="fa fa-star checked justify-content-end"></span>
-                    <span class="fa fa-star checked justify-content-end"></span>
-                    <span class="fa fa-star justify-content-end"></span>
-                    <span class="fa fa-star justify-content-end"></span>
-          </div>
+          
             <a href="{% url 'recipe' i.id %}"><img src="{{i.image}}" class="card-img-top" alt="..." ></a>
             <!--<img src="{{i.image}}" class="card-img-top" alt="..." >-->
             <div class="card-body">

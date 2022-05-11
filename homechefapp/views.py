@@ -1,10 +1,11 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
+from .models import Comment
 from django.contrib import messages
 from django.template import RequestContext
 import requests
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterFrom, UserUpdateForm, ProfileUpdateForm
+from .forms import UserRegisterFrom, UserUpdateForm, ProfileUpdateForm, CommentForm
 
 # Using Spoonacular API for homepage (150 quota/day)
 # https://api.spoonacular.com/recipes/complexSearch?query=pasta&maxFat=25&number=2&apiKey=af8f73de917040b2b3b4e5b78fe4947a
@@ -58,7 +59,6 @@ def profile(request):
 
 #####################################_____RESULTS VIEW______#####################################
 def results(request):
-
     if request.method == 'POST':
         ingredients = request.POST['ingredients']
         ingredientUrl = f'https://api.spoonacular.com/recipes/complexSearch?includeIngredients={ingredients}&number=100&apiKey={API_KEY_SPOONACULAR}'
@@ -86,15 +86,48 @@ def recipe(request, id):
     ing = data['extendedIngredients']
     inst = data['analyzedInstructions']
 
+    #comm = reversed(Comment.objects.filter(recipe_id=id))
 
     context = {
             'data': data,
             'ing': ing,
             'inst': inst,
+            #'comments':comm,
            'webPageTitle' : 'Recipe'
     }
 
     return render(request, 'homechefapp/recipe.html', context)
+
+
+
+#####################################_____COMMENTS VIEW______#####################################
+def comments(request, id):
+    #r_id = request.GET.get('id')
+    recipeUrl = f'https://api.spoonacular.com/recipes/{id}/information?includeNutrition=false&apiKey={API_KEY_SPOONACULAR}'
+    response = requests.get(recipeUrl)
+    data = response.json()
+
+    comm = reversed(Comment.objects.filter(recipe_id=id))
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+    
+        if form.is_valid():
+            form.instance.user = request.user
+            form.instance.recipe_id = id
+            form.instance.title = data['title']
+            form.save()
+            return redirect(f'/recipe/{id}/comments')
+    else:
+        form = CommentForm()
+
+        context = {
+                'data': data,
+                'form':form,
+                'comments':comm,
+            'webPageTitle' : 'Comments'
+        }
+        return render(request, 'homechefapp/comment.html', context)
 
 
 
@@ -104,8 +137,15 @@ def for_you(request):
     data = response.json()
     homeRecipes = data['recipes']
 
+    user = request.user
+    
+    comm = Comment.objects.filter(user = user)
+    
+
     context = {
           'recipes' : homeRecipes,
+          'comments' : comm,
+          #'r_name' : r_comm,
            'webPageTitle' : 'Home',
     }
 

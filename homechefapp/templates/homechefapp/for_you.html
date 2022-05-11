@@ -25,13 +25,7 @@
   <div class="row m-3">
       {% for i in recipes %}
       <div class="card mb-2 mx-2" style="width: 18rem;">
-        <div class="card-header justify-content-end">
-          <span class="fa fa-star checked justify-content-end"></span>
-                  <span class="fa fa-star checked justify-content-end"></span>
-                  <span class="fa fa-star checked justify-content-end"></span>
-                  <span class="fa fa-star justify-content-end"></span>
-                  <span class="fa fa-star justify-content-end"></span>
-        </div>
+        
           <a href="{% url 'recipe' i.id %}"><img src="{{i.image}}" class="card-img-top" alt="..." ></a>
           <!--<img src="{{i.image}}" class="card-img-top" alt="..." >-->
           <div class="card-body">
@@ -43,7 +37,27 @@
   </div>
 </div>
 
+<hr>
+<div class="container pt-5">
+  <h4 class="row justify-content-center">Recipes You've Commented On</h4>
+</div>
+<div class="container justify-content-end">
+  {% for c in comments %}
+  <div class="card mb-3 justify-content-center" style="max-width: 100%;">
+        <div class="col-md-8">
+          <div class="card-body">
+            <a href="{% url 'recipe' c.recipe_id %}"><h5 class="card-title">{{ c.title }}</h5></a>
+            <p class="card-text">{{ c.comment }}</p>
+            <p class="card-text"><small class="text-muted">{{ c.created_on }}</small></p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
 </div>
+
+
+
+  
 
 {% endblock %}

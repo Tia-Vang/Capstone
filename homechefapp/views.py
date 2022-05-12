@@ -1,6 +1,7 @@
+from email.mime import image
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
-from .models import Comment
+from .models import Comment, Profile
 from django.contrib import messages
 from django.template import RequestContext
 import requests
